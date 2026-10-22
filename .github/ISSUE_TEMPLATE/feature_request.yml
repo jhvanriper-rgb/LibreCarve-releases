@@ -1,0 +1,47 @@
+name: Feature request
+description: Ask for something LibreCarve does not do yet, or could do better.
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe what you want to make or do, not only how another program does it. Please do not
+        paste help text, screenshots, or files from other CNC programs; describe the behavior in
+        your own words.
+  - type: input
+    id: version
+    attributes:
+      label: LibreCarve version
+      description: Run `librecarve --version` (or Help > About LibreCarve).
+      placeholder: librecarve 0.1.2 (abc1234)
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: Linux Mint 22 Cinnamon, x86_64
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to do?
+      description: The project or cut you have in mind, and where LibreCarve gets in the way today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would help
+      description: How you picture it working. Steps, settings, or a sketch are all welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround today
+      description: What you do now instead, if anything.
+  - type: input
+    id: machine
+    attributes:
+      label: Machine and controller
+      description: Only if it matters for this request.
+      placeholder: Onefinity Woodworker, Buildbotics controller, gSender

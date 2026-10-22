@@ -1,0 +1,97 @@
+name: Bug report
+description: Something went wrong, crashed, or cut the wrong thing.
+title: "[Bug] "
+labels: ["bug", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing LibreCarve. A good report has the version, the steps, and the log file.
+        **If the problem is in G-code or a cut, stop the machine first.** Please do not post
+        drawings or files you are not allowed to share.
+  - type: input
+    id: version
+    attributes:
+      label: LibreCarve version
+      description: Run `librecarve --version` (or Help > About LibreCarve). It looks like `librecarve 0.1.2 (abc1234)`.
+      placeholder: librecarve 0.1.2 (abc1234)
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: Distribution and version, and the desktop if you know it.
+      placeholder: Linux Mint 22 Cinnamon, x86_64
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Drawing and editing
+        - Import or export (SVG, DXF, images)
+        - Material setup
+        - Toolpaths (profile, pocket, drill, V-carve, engrave)
+        - Tool database
+        - Simulation or verify
+        - G-code or post-processor
+        - Install or start-up
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Number each step. Commands you typed are welcome; paste them as text.
+      placeholder: |
+        1. Draw a 100 x 50 rectangle
+        2. Toolpaths > Profile..., 1/4" end mill, outside
+        3. Press Calculate
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: Include the exact message, and a screenshot if it helps.
+    validations:
+      required: true
+  - type: dropdown
+    id: crashed
+    attributes:
+      label: Did the app close or freeze?
+      options:
+        - "No"
+        - It closed (crashed)
+        - It froze and I had to close it
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log file
+      description: |
+        Attach or paste the log if you have one. On Linux it is `~/.config/librecarve/logs/librecarve.log`;
+        the run before that is `librecarve.1.log`. After a crash, restart the app and attach
+        `librecarve.1.log` (the crashed run). Drag the file onto this box to attach it.
+      render: text
+  - type: textarea
+    id: files
+    attributes:
+      label: Files
+      description: If you can share it, attach the drawing (.dxf, .svg) or G-code (.nc) that shows the problem. Zip it if GitHub refuses the extension.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Machine safety
+      options:
+        - label: This problem could move the machine somewhere unexpected (wrong depth, an XY move with the bit down, missing spin-up pause).

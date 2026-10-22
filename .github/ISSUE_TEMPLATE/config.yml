@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Install and testing guide
+    url: https://github.com/jhvanriper-rgb/LibreCarve-releases/blob/main/INSTALL.md
+    about: How to install a test build, where the log file is, and what to include in a report.
