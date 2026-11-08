@@ -8,7 +8,9 @@ a machine by itself.
 ## Linux
 
 You need a 64-bit Intel or AMD PC with Linux Mint 21 or newer, Ubuntu 22.04 or newer, or another
-distribution with glibc 2.35 or newer, and a graphics driver with Vulkan or OpenGL.
+distribution with glibc 2.35 or newer, and a graphics driver with Vulkan or OpenGL. Plan on about
+400 MB of free disk space: the download is about 140 MB because it includes the depth model (99 MB,
+Apache-2.0), so **Estimated depth** in Photo to Relief works offline with nothing more to download.
 
 1. Download `librecarve-<version>-linux-x86_64.tar.gz` and `SHA256SUMS.txt`.
 2. Optional: in the download folder run `sha256sum -c SHA256SUMS.txt`. It should print `OK`.
@@ -20,14 +22,18 @@ distribution with glibc 2.35 or newer, and a graphics driver with Vulkan or Open
    ./install.sh
    ```
 
-   This copies `librecarve` and `librecarve-cli` to `~/.local/bin` and adds LibreCarve to the
-   applications menu. `PREFIX=/some/folder ./install.sh` installs somewhere else.
+   This copies `librecarve` and `librecarve-cli` to `~/.local/bin`, the depth model to
+   `~/.local/share/librecarve/bundled-models`, and adds LibreCarve to the applications menu with its icon. `PREFIX=/some/folder ./install.sh` installs somewhere else.
 4. Start **LibreCarve** from the menu. If it does not show yet, log out and back in, or run
    `~/.local/bin/librecarve`. To try it without installing, run `./bin/librecarve` from the unpacked
    folder.
 
-**Update:** unpack the newer release and run its `./install.sh`. **Remove:** run `./install.sh --uninstall`.
-Your settings, tool database and logs stay in `~/.config/librecarve`; delete that folder too for a
+**Update:** unpack the newer release and run its `./install.sh`; it replaces the old files.
+LibreCarve never updates itself: it does not look for new versions at startup or in the background,
+and it downloads and installs nothing. **Help > Check for updates** looks at the Releases page once,
+when you click it, and tells you if a newer version exists (it needs the `curl` program, which most
+Linux systems have). **Remove:** run `./install.sh --uninstall` (it removes the depth model it
+installed too). Your settings, tool database and logs stay in `~/.config/librecarve`; delete that folder too for a
 clean slate.
 
 ## Windows
@@ -57,7 +63,14 @@ System Settings > Privacy & Security > **Open Anyway**. To check your download, 
 ## Check the version
 
 `librecarve --version` (or Help > About LibreCarve) prints something like
-`librecarve 0.1.5 (1a2b3c4...)`. Put the whole line in every report.
+`librecarve 0.1.10 (1a2b3c4...)`. Put the whole line in every report.
+
+## Big carves and memory
+
+A large picture at a fine stepover can be millions of moves. LibreCarve checks how much memory your
+computer has free and warns you, before the job gets that far, when the estimate is more than that.
+If it warns, use a larger stepover, cut a smaller area, or split the job. Closing other programs
+frees memory.
 
 ## Reporting a problem
 
@@ -80,3 +93,7 @@ settings folder on Windows and Mac):
 Each start moves the old log down one place. **After a crash, restart LibreCarve and attach
 `librecarve.1.log`**: that is the run that crashed. If LibreCarve closes while you have unsaved
 work, it offers to recover the drawing the next time it starts.
+
+## Support
+
+LibreCarve is free with no limits. If it saves you time, you can support its development on Patreon. The page is [patreon.com/c/librecarve](https://www.patreon.com/c/librecarve).
