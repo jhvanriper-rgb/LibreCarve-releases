@@ -68,6 +68,13 @@ database), where your zero point is, and which machine you have. It will ask abo
 such as the thickness. You can also hand it a photo and say "carve this as a relief"; it uses Photo to
 Relief with your bits.
 
+## The training guide for your assistant
+
+**[AGENT-GUIDE.md](AGENT-GUIDE.md)** is the full guide written for the assistant itself: every step of
+a job, the commands and settings, and what to check after each. Give it to your assistant (attach the
+file or paste its link) at the start of a session. The same material is inside LibreCarve under
+Help > AI automation, and the assistant can read it as data with `help.page`.
+
 ## What the assistant reports
 
 Before you cut, you should be given the part and material, each toolpath with its bit, depth, passes
